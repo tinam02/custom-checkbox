@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lepsi checkbox</title>
+    <style>
+      /* * STYLE */
+      @import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400&display=swap");
+      * {
+        box-sizing: border-box;
+        font-family: "Gothic A1", sans-serif;
+        font-size: 1.1em;
+        --color: rgba(0, 0, 0, 0.755);
+        color: var(--color);
+      }
+      #container {
+        background: rgba(255, 255, 255, 0.207);
+        box-shadow: 0 8px 32px 0 rgba(135, 31, 54, 0.37);
+        border-radius: 10px;
+        border: 1px solid var(--color);
+      }
+      body {
+        margin: 25% auto;
+        display: grid;
+        place-items: center;
+        background: #ba5370; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to top,
+          #f4e2d8,
+          #ba5370
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to top,
+          #f4e2d8,
+          #ba5370
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        height: 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      /* * CHECKBOX */
+      .container {
+        /* checkbox je iznad kad se zumira, =>> */
+        display: flex;
+        align-items: center;
+        margin: 1em;
+      }
+      label {
+        cursor: pointer;
+
+        /* label je inline (inline elem nema sirinu ) a ::before to nasledjuje, zato se u labelu stavlja flex*/
+        display: flex;
+      }
+      input {
+        cursor: pointer;
+        opacity: 0;
+        /* ne display none */
+        position: absolute;
+        /* ne zauzima mesto ispred teksta 'Checkbox' */
+      }
+      label::before {
+        /* ovo je umesto checkboxa */
+        content: "";
+        width: 1em;
+        /* scaleuje se */
+        height: 1em;
+        border-radius: 0.15em;
+        margin-right: 0.5em;
+        border: 0.05em solid var(--color);
+      }
+      label:hover::before,
+      input:hover + label::before {
+        /* label mora da bude posle inputa u html */
+        background-color: #cad8bf;
+      }
+      input:checked + label::before {
+        content: "\002714";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--color);
+        background-color: rgb(156, 220, 131);
+      }
+      input:focus + label::before {
+        box-shadow: 0 8px 32px 0 rgba(135, 31, 54, 0.37);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="container">
+        <input type="checkbox" name="cb1" id="cb1" />
+        <label for="cb1">Checkbox 1</label>
+      </div>
+      <div class="container">
+        <input type="checkbox" name="cb2" id="cb2" />
+        <label for="cb2">Checkbox 2</label>
+      </div>
+      <div class="container">
+        <input type="checkbox" name="cb3" id="cb3" />
+        <label for="cb3">Checkbox 3</label>
+      </div>
+    </div>
+  </body>
+</html>
